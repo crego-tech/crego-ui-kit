@@ -1,6 +1,6 @@
 {
   "name": "@crego/ui-kit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Shared UI components and utilities for Crego applications",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
