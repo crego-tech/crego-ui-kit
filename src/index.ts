@@ -1,5 +1,5 @@
 // Main component
-export { default as Navigation } from './Navigation'
+export { default as ModuleSwitcher } from './ModuleSwitcher'
 
 // UI components (can be used by consumers too)
 export { Popover, PopoverTrigger, PopoverContent } from './components/ui/popover'
@@ -9,4 +9,4 @@ export { Button, buttonVariants } from './components/ui/button'
 export { cn } from './lib/utils'
 
 // Types
-export type { NavigationProps, ModulePage } from './types'
+export type { ModuleSwitcherProps, ModulePage } from './types'

@@ -1,6 +1,6 @@
 {
   "name": "@crego/ui-kit",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Shared UI components and utilities for Crego applications",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -24,9 +24,9 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "lucide-react": "^0.400.0",
-    "@radix-ui/react-popover": "^1.0.0",
-    "@radix-ui/react-slot": "^1.0.0"
+    "lucide-react": ">=0.400.0",
+    "@radix-ui/react-popover": ">=1.0.0",
+    "@radix-ui/react-slot": ">=1.0.0"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

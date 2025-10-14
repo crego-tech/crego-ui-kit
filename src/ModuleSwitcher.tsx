@@ -8,9 +8,9 @@ import {
 } from './components/ui/popover'
 import { buttonVariants } from './components/ui/button'
 import { cn } from './lib/utils'
-import { NavigationProps } from './types'
+import { ModuleSwitcherProps } from './types'
 
-const Navigation: React.FC<NavigationProps> = ({
+const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
   selectedModule,
   pages,
   onPageSwitch,
@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
     // If renderLicenseGuard is provided, wrap the page with it
     if (renderLicenseGuard) {
-      return renderLicenseGuard(page.module, pageElement)
+      return renderLicenseGuard(page.licenseKey, pageElement)
     }
 
     return pageElement
@@ -102,4 +102,4 @@ const Navigation: React.FC<NavigationProps> = ({
   )
 }
 
-export default Navigation
+export default ModuleSwitcher

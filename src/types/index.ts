@@ -6,11 +6,11 @@ export interface ModulePage {
     Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
   >
   label: string
-  module?: string
+  licenseKey?: string
   subPages?: string[]
 }
 
-export interface NavigationProps {
+export interface ModuleSwitcherProps {
   selectedModule: ModulePage
   pages: ModulePage[]
   onPageSwitch: (page: ModulePage) => void
