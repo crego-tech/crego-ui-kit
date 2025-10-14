@@ -67,60 +67,53 @@ module.exports = {
 
 ## Usage
 
-### Navigation Component
+### ModuleSwitcher Component
 
-The Navigation component provides a module switcher with a popover interface.
+The `ModuleSwitcher` provides a module switcher with a popover interface.
 
 ```tsx
-import { Navigation, ModulePage } from '@crego/ui-kit'
-import { User, Settings, Files } from 'lucide-react'
+import { ModuleSwitcher, type ModulePage } from "@crego/ui-kit";
+import { User, Settings, Files } from "lucide-react";
 
 const pages: ModulePage[] = [
   {
-    path: '/contacts',
+    path: "/contacts",
     icon: User,
-    label: 'Contacts',
-    module: 'contacts'
+    label: "Contacts",
+    licenseKey: "contacts",
   },
   {
-    path: '/settings',
+    path: "/settings",
     icon: Settings,
-    label: 'Settings'
+    label: "Settings",
   },
   {
-    path: '/documents',
+    path: "/documents",
     icon: Files,
-    label: 'Documents',
-    module: 'documents'
-  }
-]
+    label: "Documents",
+    licenseKey: "documents",
+  },
+];
 
 function App() {
-  const [selectedModule, setSelectedModule] = useState(pages[0])
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
+  const [selectedModule, setSelectedModule] = useState(pages[0]);
+  const [allowedModules] = useState<string[]>(["contacts", "documents"]);
 
   const handlePageSwitch = (page: ModulePage) => {
-    setSelectedModule(page)
+    setSelectedModule(page);
     // Navigate to the page
-    navigate(page.path)
-  }
-
-  // Optional: Custom license guard renderer
-  const renderLicenseGuard = (module: string | null | undefined, children: React.ReactNode) => {
-    if (!module) return children
-    // Your license checking logic here
-    return hasAccess(module) ? children : null
-  }
+    navigate(page.path);
+  };
 
   return (
-    <Navigation
+    <ModuleSwitcher
       selectedModule={selectedModule}
       pages={pages}
       onPageSwitch={handlePageSwitch}
-      isSidebarCollapsed={isSidebarCollapsed}
-      renderLicenseGuard={renderLicenseGuard}
+      isMinimized={false}
+      allowedModules={allowedModules}
     />
-  )
+  );
 }
 ```
 
@@ -129,7 +122,7 @@ function App() {
 The package also exports individual UI components that you can use:
 
 ```tsx
-import { Button, Popover, PopoverTrigger, PopoverContent } from '@crego/ui-kit'
+import { Button, Popover, PopoverTrigger, PopoverContent } from "@crego/ui-kit";
 
 function MyComponent() {
   return (
@@ -141,21 +134,17 @@ function MyComponent() {
         <p>Popover content</p>
       </PopoverContent>
     </Popover>
-  )
+  );
 }
 ```
 
 ### Utilities
 
 ```tsx
-import { cn } from '@crego/ui-kit'
+import { cn } from "@crego/ui-kit";
 
 function MyComponent({ className }) {
-  return (
-    <div className={cn('base-class', className)}>
-      Content
-    </div>
-  )
+  return <div className={cn("base-class", className)}>Content</div>;
 }
 ```
 
@@ -164,9 +153,9 @@ function MyComponent({ className }) {
 The package includes full TypeScript support with exported types:
 
 ```tsx
-import type { NavigationProps, ModulePage } from '@crego/ui-kit'
+import type { ModuleSwitcherProps, ModulePage } from "@crego/ui-kit";
 ```
 
 ## License
 
-UNLICENSED - Private package for Crego applications.
+MIT
