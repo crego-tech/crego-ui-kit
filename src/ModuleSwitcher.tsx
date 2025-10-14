@@ -14,13 +14,19 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
   selectedModule,
   pages,
   onPageSwitch,
-  isSidebarCollapsed = false,
-  renderLicenseGuard
+  isMinimized = false,
+  allowedModules
 }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const isActive = (path: string) => {
     return selectedModule.path === path
+  }
+
+  const isAllowed = (licenseKey: string) => {
+    if (!allowedModules) return true
+    if (licenseKey === '') return true
+    return allowedModules?.includes(licenseKey)
   }
 
   const renderPage = (page: typeof pages[0]) => {
@@ -45,11 +51,6 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
       </Link>
     )
 
-    // If renderLicenseGuard is provided, wrap the page with it
-    if (renderLicenseGuard) {
-      return renderLicenseGuard(page.licenseKey, pageElement)
-    }
-
     return pageElement
   }
 
@@ -59,7 +60,7 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
         <span
           className={cn(
             'inline-flex items-center cursor-pointer rounded-lg group bg-card hover:bg-muted border-border transition-all',
-            isSidebarCollapsed
+            isMinimized
               ? 'justify-center p-0.5 w-10 h-10'
               : 'justify-between p-0.5'
           )}
@@ -67,12 +68,12 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
           <div className="flex items-center justify-center rounded-lg bg-primary group-hover:bg-primary/90 transition-all h-8 w-8">
             <selectedModule.icon className="h-4 w-4 text-primary-foreground" />
           </div>
-          {!isSidebarCollapsed && (
+          {!isMinimized && (
             <span className="ml-2 mr-1 text-sm font-medium text-foreground group-hover:text-foreground/80">
               {selectedModule.label}
             </span>
           )}
-          {!isSidebarCollapsed && (
+          {!isMinimized && (
             <ChevronDown
               className={cn(
                 'h-4 w-4 text-muted-foreground ml-1 mr-1 transition-all group-hover:text-foreground',
@@ -92,7 +93,7 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
           <div className="grid grid-cols-4 gap-2 pt-1">
             {pages.map((page) => (
               <React.Fragment key={page.path}>
-                {renderPage(page)}
+                {isAllowed(page.licenseKey ?? '') && renderPage(page)}
               </React.Fragment>
             ))}
           </div>

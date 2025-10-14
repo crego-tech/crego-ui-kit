@@ -14,6 +14,6 @@ export interface ModuleSwitcherProps {
   selectedModule: ModulePage
   pages: ModulePage[]
   onPageSwitch: (page: ModulePage) => void
-  isSidebarCollapsed?: boolean
-  renderLicenseGuard?: (module: string | null | undefined, children: React.ReactNode) => React.ReactNode
+  isMinimized?: boolean
+  allowedModules?: string[]
 }
