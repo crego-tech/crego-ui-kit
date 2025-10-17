@@ -15,7 +15,7 @@ const plugin = require('tailwindcss/plugin')
  * }
  * ```
  */
-module.exports = plugin(
+const uiKitPlugin = plugin(
   function ({ addComponents, addUtilities }) {
     // Add any custom components if needed
     addComponents({
@@ -37,3 +37,5 @@ module.exports = plugin(
     }
   }
 )
+
+module.exports = uiKitPlugin
