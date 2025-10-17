@@ -13,7 +13,6 @@ export interface ModulePage {
 export interface ModuleSwitcherProps {
   selectedModule: ModulePage
   pages: ModulePage[]
-  onPageSwitch: (page: ModulePage) => void
   isMinimized?: boolean
   allowedModules?: string[]
 }

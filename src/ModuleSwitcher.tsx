@@ -13,7 +13,6 @@ import { ModuleSwitcherProps } from './types'
 const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
   selectedModule,
   pages,
-  onPageSwitch,
   isMinimized = false,
   allowedModules
 }) => {
@@ -38,13 +37,12 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
             variant: isActive(page.path) ? 'secondary' : 'ghost',
             size: 'sm'
           }),
-          'flex flex-col items-center justify-center h-20 rounded-md p-5',
+          'flex flex-col items-center justify-center h-20 rounded-md p-2',
           {
             'bg-muted': isActive(page.path),
             'hover:bg-secondary': !isActive(page.path)
           }
         )}
-        onClick={() => onPageSwitch(page)}
       >
         <page.icon className="h-8 w-8 mb-1" />
         <span className="text-xs">{page.label}</span>
