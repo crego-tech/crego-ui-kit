@@ -72,38 +72,38 @@ module.exports = {
 The `ModuleSwitcher` provides a module switcher with a popover interface.
 
 ```tsx
-import { ModuleSwitcher, type ModulePage } from "@crego/ui-kit";
-import { User, Settings, Files } from "lucide-react";
+import { ModuleSwitcher, type ModulePage } from '@crego/ui-kit'
+import { User, Settings, Files } from 'lucide-react'
 
 const pages: ModulePage[] = [
   {
-    path: "/contacts",
+    path: '/contacts',
     icon: User,
-    label: "Contacts",
-    licenseKey: "contacts",
+    label: 'Contacts',
+    licenseKey: 'contacts'
   },
   {
-    path: "/settings",
+    path: '/settings',
     icon: Settings,
-    label: "Settings",
+    label: 'Settings'
   },
   {
-    path: "/documents",
+    path: '/documents',
     icon: Files,
-    label: "Documents",
-    licenseKey: "documents",
-  },
-];
+    label: 'Documents',
+    licenseKey: 'documents'
+  }
+]
 
 function App() {
-  const [selectedModule, setSelectedModule] = useState(pages[0]);
-  const [allowedModules] = useState<string[]>(["contacts", "documents"]);
+  const [selectedModule, setSelectedModule] = useState(pages[0])
+  const [allowedModules] = useState<string[]>(['contacts', 'documents'])
 
   const handlePageSwitch = (page: ModulePage) => {
-    setSelectedModule(page);
+    setSelectedModule(page)
     // Navigate to the page
-    navigate(page.path);
-  };
+    navigate(page.path)
+  }
 
   return (
     <ModuleSwitcher
@@ -113,7 +113,7 @@ function App() {
       isMinimized={false}
       allowedModules={allowedModules}
     />
-  );
+  )
 }
 ```
 
@@ -122,7 +122,7 @@ function App() {
 The package also exports individual UI components that you can use:
 
 ```tsx
-import { Button, Popover, PopoverTrigger, PopoverContent } from "@crego/ui-kit";
+import { Button, Popover, PopoverTrigger, PopoverContent } from '@crego/ui-kit'
 
 function MyComponent() {
   return (
@@ -134,17 +134,17 @@ function MyComponent() {
         <p>Popover content</p>
       </PopoverContent>
     </Popover>
-  );
+  )
 }
 ```
 
 ### Utilities
 
 ```tsx
-import { cn } from "@crego/ui-kit";
+import { cn } from '@crego/ui-kit'
 
 function MyComponent({ className }) {
-  return <div className={cn("base-class", className)}>Content</div>;
+  return <div className={cn('base-class', className)}>Content</div>
 }
 ```
 
@@ -153,7 +153,84 @@ function MyComponent({ className }) {
 The package includes full TypeScript support with exported types:
 
 ```tsx
-import type { ModuleSwitcherProps, ModulePage } from "@crego/ui-kit";
+import type { ModuleSwitcherProps, ModulePage } from '@crego/ui-kit'
+```
+
+## Local Development
+
+When developing the UI kit locally and using it in your main application, you can set up a local development workflow using npm link.
+
+### Setting up Local Development
+
+1. **Build the UI kit package:**
+
+   ```bash
+   cd /path/to/crego-ui-kit
+   npm run build
+   ```
+
+2. **Create a global link for the package:**
+
+   ```bash
+   cd /path/to/crego-ui-kit
+   npm link
+   ```
+
+3. **Link the package in your consuming project:**
+
+   ```bash
+   cd /path/to/your-main-app
+   npm link @crego/ui-kit
+   ```
+
+4. **Verify the link was created:**
+   ```bash
+   ls -la node_modules/@crego/ui-kit
+   # Should show a symlink pointing to your local package
+   ```
+
+### Development Workflow
+
+1. **Start the UI kit in watch mode:**
+
+   ```bash
+   cd /path/to/crego-ui-kit
+   npm run dev
+   ```
+
+   This will watch for changes and rebuild automatically.
+
+2. **Start your main application:**
+
+   ```bash
+   cd /path/to/your-main-app
+   npm run dev
+   ```
+
+3. **Make changes to the UI kit** and they'll be reflected in your main app after the watch rebuilds!
+
+### Alternative: File Protocol
+
+If you prefer not to use npm link, you can also use the file protocol in your consuming project's `package.json`:
+
+```json
+{
+  "dependencies": {
+    "@crego/ui-kit": "file:../crego-ui-kit"
+  }
+}
+```
+
+Then run `npm install` to update the dependency.
+
+### Unlinking
+
+To return to using the published version of the package:
+
+```bash
+cd /path/to/your-main-app
+npm unlink @crego/ui-kit
+npm install @crego/ui-kit@^1.0.4
 ```
 
 ## License

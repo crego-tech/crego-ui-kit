@@ -1,0 +1,10 @@
+dist/
+node_modules/
+.git/
+*.log
+*.lock
+package-lock.json
+yarn.lock
+public/
+*.min.js
+*.min.css

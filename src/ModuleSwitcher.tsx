@@ -29,7 +29,7 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
     return allowedModules?.includes(licenseKey)
   }
 
-  const renderPage = (page: typeof pages[0]) => {
+  const renderPage = (page: (typeof pages)[0]) => {
     const pageElement = (
       <Link
         to={page.path}
@@ -38,7 +38,7 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
             variant: isActive(page.path) ? 'secondary' : 'ghost',
             size: 'sm'
           }),
-          'flex flex-col items-center justify-center h-20 rounded-md p-2',
+          'flex flex-col items-center justify-center h-20 rounded-md p-5',
           {
             'bg-muted': isActive(page.path),
             'hover:bg-secondary': !isActive(page.path)

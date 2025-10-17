@@ -18,15 +18,17 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "peerDependencies": {
+    "@radix-ui/react-popover": ">=1.0.0",
+    "@radix-ui/react-slot": ">=1.0.0",
+    "lucide-react": "^0.462.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "lucide-react": ">=0.400.0",
-    "@radix-ui/react-popover": ">=1.0.0",
-    "@radix-ui/react-slot": ">=1.0.0"
+    "react-router-dom": "^6.0.0"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -34,6 +36,7 @@
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
+    "prettier": "^3.6.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "react": "^18.3.1",
