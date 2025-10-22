@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import {
   Popover,
@@ -30,8 +29,8 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
 
   const renderPage = (page: (typeof pages)[0]) => {
     const pageElement = (
-      <Link
-        to={page.path}
+      <a
+        href={page.path}
         className={cn(
           buttonVariants({
             variant: isActive(page.path) ? 'secondary' : 'ghost',
@@ -46,7 +45,7 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
       >
         <page.icon className="h-8 w-8 mb-1" />
         <span className="text-xs">{page.label}</span>
-      </Link>
+      </a>
     )
 
     return pageElement
