@@ -13,7 +13,7 @@ npm install @crego/ui-kit
 This package requires the following peer dependencies to be installed in your project:
 
 ```bash
-npm install react react-dom lucide-react @radix-ui/react-popover @radix-ui/react-slot
+npm install react react-dom lucide-react @radix-ui/react-popover @radix-ui/react-slot react-router-dom
 ```
 
 ## Styling
