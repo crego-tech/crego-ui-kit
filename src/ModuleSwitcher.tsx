@@ -8,6 +8,7 @@ import {
 import { buttonVariants } from './components/ui/button'
 import { cn } from './lib/utils'
 import { ModuleSwitcherProps } from './types'
+import { Link } from 'react-router-dom'
 
 const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
   selectedModule,
@@ -27,28 +28,43 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
     return allowedModules?.includes(licenseKey)
   }
 
+  const getPageClassName = (path: string) => {
+    const isPageActive = isActive(path)
+    return cn(
+      buttonVariants({
+        variant: isPageActive ? 'secondary' : 'ghost',
+        size: 'sm'
+      }),
+      'flex flex-col items-center justify-center h-20 rounded-md p-2',
+      {
+        'bg-muted': isPageActive,
+        'hover:bg-secondary': !isPageActive
+      }
+    )
+  }
+
   const renderPage = (page: (typeof pages)[0]) => {
-    const pageElement = (
-      <a
-        href={page.path}
-        className={cn(
-          buttonVariants({
-            variant: isActive(page.path) ? 'secondary' : 'ghost',
-            size: 'sm'
-          }),
-          'flex flex-col items-center justify-center h-20 rounded-md p-2',
-          {
-            'bg-muted': isActive(page.path),
-            'hover:bg-secondary': !isActive(page.path)
-          }
-        )}
-      >
+    const className = getPageClassName(page.path)
+    const content = (
+      <>
         <page.icon className="h-8 w-8 mb-1" />
         <span className="text-xs">{page.label}</span>
-      </a>
+      </>
     )
 
-    return pageElement
+    if (!(page?.useRouter ?? true)) {
+      return (
+        <a href={page.path} className={className}>
+          {content}
+        </a>
+      )
+    }
+
+    return (
+      <Link to={page.path} className={className}>
+        {content}
+      </Link>
+    )
   }
 
   return (

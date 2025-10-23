@@ -99,7 +99,7 @@ If you need guaranteed CSS availability, you can import the pre-compiled styles:
 
 ### ModuleSwitcher Component
 
-The `ModuleSwitcher` provides a module switcher with a popover interface.
+The `ModuleSwitcher` provides a module switcher with a popover interface. By default, all pages use React Router navigation unless explicitly disabled.
 
 ```tsx
 import { ModuleSwitcher, type ModulePage } from '@crego/ui-kit'
@@ -111,17 +111,26 @@ const pages: ModulePage[] = [
     icon: User,
     label: 'Contacts',
     licenseKey: 'contacts'
+    // useRouter defaults to true - will use React Router Link
   },
   {
     path: '/settings',
     icon: Settings,
     label: 'Settings'
+    // useRouter defaults to true - will use React Router Link
   },
   {
     path: '/documents',
     icon: Files,
     label: 'Documents',
-    licenseKey: 'documents'
+    licenseKey: 'documents',
+    useRouter: false // Explicitly use regular anchor tag
+  },
+  {
+    path: 'https://external-site.com',
+    icon: ExternalLink,
+    label: 'External Link',
+    useRouter: false // Use anchor tag for external links
   }
 ]
 
@@ -129,23 +138,22 @@ function App() {
   const [selectedModule, setSelectedModule] = useState(pages[0])
   const [allowedModules] = useState<string[]>(['contacts', 'documents'])
 
-  const handlePageSwitch = (page: ModulePage) => {
-    setSelectedModule(page)
-    // Navigate to the page
-    navigate(page.path)
-  }
-
   return (
     <ModuleSwitcher
       selectedModule={selectedModule}
       pages={pages}
-      onPageSwitch={handlePageSwitch}
       isMinimized={false}
       allowedModules={allowedModules}
     />
   )
 }
 ```
+
+#### Navigation Behavior
+
+- **Default**: All pages use React Router's `<Link>` component for client-side navigation
+- **External Links**: Set `useRouter: false` for external URLs or when you need regular anchor tag behavior
+- **Mixed Usage**: You can mix React Router links and anchor tags in the same switcher
 
 ### UI Components
 

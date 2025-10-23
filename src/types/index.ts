@@ -8,6 +8,7 @@ export interface ModulePage {
   label: string
   licenseKey?: string
   subPages?: string[]
+  useRouter?: boolean
 }
 
 export interface ModuleSwitcherProps {
