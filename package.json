@@ -1,6 +1,6 @@
 {
   "name": "@crego/ui-kit",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Shared UI components and utilities for Crego applications",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -47,8 +47,6 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "prettier": "^3.6.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "tailwindcss": "^4.1.14",
     "tsup": "^8.0.0",
     "typescript": "^5.5.3"

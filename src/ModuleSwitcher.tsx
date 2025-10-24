@@ -35,7 +35,7 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
         variant: isPageActive ? 'secondary' : 'ghost',
         size: 'sm'
       }),
-      'flex flex-col items-center justify-center h-20 rounded-md p-2',
+      'flex flex-col items-center justify-center h-20 rounded-xl p-2',
       {
         'bg-muted': isPageActive,
         'hover:bg-secondary': !isPageActive
@@ -70,20 +70,25 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
       <PopoverTrigger asChild>
         <span
           className={cn(
-            'inline-flex items-center cursor-pointer rounded-lg group bg-card hover:bg-muted border-border transition-all',
-            isMinimized
-              ? 'justify-center p-0.5 w-10 h-10'
-              : 'justify-between p-0.5'
+            'inline-flex items-center cursor-pointer rounded-xl w-full group bg-foreground/5 hover:bg-primary/10 border-border transition-all',
+            isMinimized ? 'justify-center h-10 w-10' : 'justify-between p-1.5'
           )}
         >
-          <div className="flex items-center justify-center rounded-lg bg-primary group-hover:bg-primary/90 transition-all h-8 w-8">
-            <selectedModule.icon className="h-4 w-4 text-primary-foreground" />
+          <div className="flex items-center justify-center gap-1">
+            <div
+              className={cn(
+                'flex items-center justify-center rounded-xl bg-primary group-hover:bg-primary/80 transition-all border border-border',
+                isMinimized ? 'h-10 w-10' : 'h-8 w-8'
+              )}
+            >
+              <selectedModule.icon className="h-4 w-4 text-primary-foreground" />
+            </div>
+            {!isMinimized && (
+              <span className="ml-2 mr-1 text-sm font-semibold text-foreground group-hover:text-foreground/80">
+                {selectedModule.label}
+              </span>
+            )}
           </div>
-          {!isMinimized && (
-            <span className="ml-2 mr-1 text-sm font-medium text-foreground group-hover:text-foreground/80">
-              {selectedModule.label}
-            </span>
-          )}
           {!isMinimized && (
             <ChevronDown
               className={cn(
