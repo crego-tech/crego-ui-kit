@@ -52,18 +52,16 @@ const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
       </>
     )
 
-    if (!(page?.useRouter ?? true)) {
-      return (
-        <a href={page.path} className={className}>
-          {content}
-        </a>
-      )
-    }
+    const useRouter = page?.useRouter ?? true
 
-    return (
+    return useRouter ? (
       <Link to={page.path} className={className}>
         {content}
       </Link>
+    ) : (
+      <a href={page.path} className={className}>
+        {content}
+      </a>
     )
   }
 
