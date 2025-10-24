@@ -18,9 +18,9 @@ npm install react react-dom lucide-react @radix-ui/react-popover @radix-ui/react
 
 ## Styling
 
-This package requires Tailwind CSS to be configured in your project. You have two options:
+This package requires Tailwind CSS to be configured in your project :
 
-### Option 1: Use the Tailwind Plugin (Recommended)
+### Use the Tailwind Plugin
 
 Add the UI kit's Tailwind plugin to your `tailwind.config.js`:
 
@@ -32,67 +32,6 @@ module.exports = {
   ],
   plugins: [require('@crego/ui-kit/tailwind-plugin')]
 }
-```
-
-### Option 2: Manual Configuration
-
-If you prefer not to use the plugin, ensure your Tailwind config includes the UI kit files:
-
-```js
-module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@crego/ui-kit/**/*.js'
-  ],
-  theme: {
-    extend: {
-      colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
-        }
-      }
-    }
-  }
-}
-```
-
-### Option 3: Import Pre-compiled Styles (Alternative)
-
-If you need guaranteed CSS availability, you can import the pre-compiled styles:
-
-```css
-/* In your main CSS file */
-@import '@crego/ui-kit/styles.css';
 ```
 
 ## Usage
