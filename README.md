@@ -207,7 +207,7 @@ To return to using the published version of the package:
 ```bash
 cd /path/to/your-main-app
 npm unlink @crego/ui-kit
-npm install @crego/ui-kit@^1.0.4
+npm install @crego/ui-kit@latest
 ```
 
 ## License
