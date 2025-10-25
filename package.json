@@ -27,7 +27,11 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "clean": "rm -rf dist node_modules"
+    "clean": "rm -rf dist node_modules",
+    "prepublishOnly": "npm run build",
+    "preversion": "npm run typecheck && npm run format:check",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
     "@radix-ui/react-popover": ">=1.0.0",

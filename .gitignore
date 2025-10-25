@@ -9,3 +9,21 @@ build
 *.zip
 *.tar
 *.gz
+
+# NPM and publishing
+.npm
+.npmrc.local
+*.tgz
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db

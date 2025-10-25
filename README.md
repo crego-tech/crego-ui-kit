@@ -133,6 +133,43 @@ The package includes full TypeScript support with exported types:
 import type { ModuleSwitcherProps, ModulePage } from '@crego/ui-kit'
 ```
 
+## Versioning and Publishing
+
+This package uses automated versioning and publishing with npm versioning and GitHub Actions.
+
+### Quick Start
+
+**Release a new version**:
+
+```bash
+# For bug fixes (1.3.5 → 1.3.6)
+npm version patch
+
+# For new features (1.3.5 → 1.4.0)
+npm version minor
+
+# For breaking changes (1.3.5 → 2.0.0)
+npm version major
+```
+
+### What Happens Automatically
+
+When you run `npm version`, the system will:
+
+- Update the version in `package.json`
+- Create a git tag (e.g., `v1.3.6`)
+- Push changes and tags to GitHub
+- Trigger GitHub Actions to build and publish the package
+- Create a GitHub release
+
+### Prerequisites
+
+- NPM authentication token set as `NPM_TOKEN` in GitHub repository secrets
+- GitHub repository with Actions enabled
+- All changes committed to git
+
+For detailed instructions, see [VERSIONING.md](./VERSIONING.md).
+
 ## Local Development
 
 When developing the UI kit locally and using it in your main application, you can set up a local development workflow using npm link.
