@@ -8,7 +8,7 @@ import {
 import { buttonVariants } from './components/ui/button'
 import { cn } from './lib/utils'
 import { ModuleSwitcherProps } from './types'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const ModuleSwitcher: React.FC<ModuleSwitcherProps> = ({
   selectedModule,
