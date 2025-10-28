@@ -14,12 +14,18 @@
     "./tailwind-plugin": {
       "types": "./src/tailwind-plugin.d.ts",
       "require": "./src/tailwind-plugin.js"
+    },
+    "./tailwind-plugin-v4": {
+      "types": "./src/tailwind-plugin-v4.d.ts",
+      "require": "./src/tailwind-plugin-v4.js"
     }
   },
   "files": [
     "dist",
     "src/tailwind-plugin.js",
-    "src/tailwind-plugin.d.ts"
+    "src/tailwind-plugin.d.ts",
+    "src/tailwind-plugin-v4.js",
+    "src/tailwind-plugin-v4.d.ts"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",

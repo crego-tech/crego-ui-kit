@@ -18,9 +18,9 @@ npm install react react-dom lucide-react @radix-ui/react-popover @radix-ui/react
 
 ## Styling
 
-This package requires Tailwind CSS to be configured in your project :
+This package requires Tailwind CSS to be configured in your project.
 
-### Use the Tailwind Plugin
+### Tailwind CSS v3
 
 Add the UI kit's Tailwind plugin to your `tailwind.config.js`:
 
@@ -33,6 +33,31 @@ module.exports = {
   plugins: [require('@crego/ui-kit/tailwind-plugin')]
 }
 ```
+
+### Tailwind CSS v4
+
+For Tailwind CSS v4, the recommended approach is to use the `@plugin` directive in your CSS file:
+
+```css
+@import "tailwindcss";
+@plugin "@crego/ui-kit/tailwind-plugin-v4";
+```
+
+Alternatively, you can use it in your `tailwind.config.js`:
+
+```js
+export default {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@crego/ui-kit/**/*.js'
+  ],
+  plugins: [
+    require('@crego/ui-kit/tailwind-plugin-v4')
+  ]
+}
+```
+
+> **Note**: Tailwind CSS v4 uses CSS-first configuration. Using the `@plugin` directive in CSS is the modern, recommended approach.
 
 ## Usage
 
