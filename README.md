@@ -39,7 +39,7 @@ module.exports = {
 For Tailwind CSS v4, the recommended approach is to use the `@plugin` directive in your CSS file:
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@crego/ui-kit/tailwind-plugin-v4";
 ```
 
@@ -51,9 +51,7 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
     './node_modules/@crego/ui-kit/**/*.js'
   ],
-  plugins: [
-    require('@crego/ui-kit/tailwind-plugin-v4')
-  ]
+  plugins: [require('@crego/ui-kit/tailwind-plugin-v4')]
 }
 ```
 
